@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Business Card</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #001f3f; color: #fff; text-align: center; padding: 20px; }
+        .card { background: #003366; border-radius: 8px; padding: 20px; max-width: 400px; margin: auto; box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); }
+        img { border-radius: 50%; width: 100px; height: 100px; object-fit: cover; }
+        h2, p { margin: 10px 0; }
+        .info { background: #004080; margin: 10px auto; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        {% if data.photo %}
+            <img src="{{ url_for('static', filename=data.photo.split('/')[-2] + '/' + data.photo.split('/')[-1]) }}" alt="Photo">
+        {% endif %}
+        <h2>{{ data.name }}</h2>
+        <div class="info">Employee Code: {{ data.emp_code }}</div>
+        <div class="info">Mobile: {{ data.mobile }}</div>
+        <div class="info">Address: {{ data.address }}</div>
+    </div>
+</body>
+</html>

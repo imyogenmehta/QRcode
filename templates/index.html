@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate QR Code</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f9; }
+        form { margin: 20px auto; width: 300px; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 0 10px #ccc; }
+        input, button { margin: 10px 0; width: 100%; padding: 8px; }
+        img { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Generate Business Card QR Code</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Name" required><br>
+        <input type="text" name="address" placeholder="Address"><br>
+        <input type="text" name="emp_code" placeholder="Employee Code"><br>
+        <input type="text" name="mobile" placeholder="Mobile Number"><br>
+        <input type="file" name="photo" accept="image/*"><br>
+        <button type="submit">Generate QR Code</button>
+    </form>
+
+    {% if qr_code %}
+        <h3>QR Code Generated:</h3>
+        <img src="{{ qr_code }}" alt="QR Code" width="200">
+        <p><a href="{{ display_url }}" target="_blank">Open QR Link</a></p>
+    {% endif %}
+</body>
+</html>
